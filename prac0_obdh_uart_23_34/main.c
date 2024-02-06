@@ -8,16 +8,18 @@
 uint32_t rx_byte_counter = 0;
 
 
+//manejador de interrupción "user defined"
 void uart_rx_handler(void) {
 
 	leon3_getchar(); //Leo el caracter para vaciar el buffer
-	rx_byte_counter++;
+	rx_byte_counter++; //Actualizo el contador de bytes
 }
+
+
 
 int main() {
 
 	uint8_t byte_counter=0;
-	//a
 
 	printf("\nInit UART Example\n");
 
@@ -25,7 +27,7 @@ int main() {
 	// que habilita las interrupciones
 	leon3_set_trap_handler(0x83, leon3_trap_handler_enable_irqs);
 
-	//Instalar el manejador del trap que 0x83 la rutina
+	//Instalar el manejador del trap que 0x84 la rutina
 	// que deshabilita las interrupciones
 	leon3_set_trap_handler(0x84, leon3_trap_handler_disable_irqs);
 
@@ -35,8 +37,8 @@ int main() {
 	//Enmascarar todas las interrupciones, sólo desenmascaremos aquellas que tenemos manejadas.
 	leon3_mask_all_irqs();
 
-	//Instalar la función button_handler como
-	// manejador de usuario de la interrupción de nivel 4
+	//Instalar la función uart_rx_handler como
+	// manejador de usuario de la interrupción de nivel 4 (2?)
 
 
 	leon3_install_user_hw_irq_handler(2, uart_rx_handler);
@@ -58,8 +60,10 @@ int main() {
 
 		//Detecta botón pulsado
 		if((byte_counter)!=rx_byte_counter){
-			printf(".");
-
+			printf("BYTE COUNTER:               %d\n", byte_counter );
+			if(byte_counter==33){
+				printf("Como 33?\n");
+			}
 			//Inicio Sección Crítica entre IRQ 2 handler y main
 			leon3_mask_irq(2);
 			byte_counter=rx_byte_counter;
