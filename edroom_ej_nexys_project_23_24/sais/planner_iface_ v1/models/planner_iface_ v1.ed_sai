@@ -1,0 +1,12 @@
+
+
+/*
+ * SAI Model.
+*/ 
+
+
+sai planner_iface{
+
+	uri := .planner_iface;
+	version := v1;
+};

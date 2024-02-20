@@ -1,0 +1,12 @@
+
+
+/*
+ * SAI Model.
+*/ 
+
+
+sai nexys_gpio_drv{
+
+	uri := .nexys_gpio_drv;
+	version :=v1;
+};

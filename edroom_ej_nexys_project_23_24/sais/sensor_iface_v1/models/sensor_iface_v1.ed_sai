@@ -1,0 +1,12 @@
+
+
+/*
+ * SAI Model.
+*/ 
+
+
+sai sensor_iface{
+
+	uri := .sensor_iface;
+	version :=v1;
+};

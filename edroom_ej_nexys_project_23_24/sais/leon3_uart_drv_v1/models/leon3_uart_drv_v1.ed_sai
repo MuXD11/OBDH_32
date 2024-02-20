@@ -1,0 +1,12 @@
+
+
+/*
+ * SAI Model.
+*/ 
+
+
+sai leon3_uart_drv{
+
+	uri := .leon3_uart_drv;
+	version :=v1;
+};

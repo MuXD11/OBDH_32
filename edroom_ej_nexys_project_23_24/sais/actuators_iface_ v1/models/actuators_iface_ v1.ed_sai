@@ -1,0 +1,12 @@
+
+
+/*
+ * SAI Model.
+*/ 
+
+
+sai actuators_iface{
+
+	uri := .actuators_iface;
+	version := v1;
+};

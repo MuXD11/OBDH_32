@@ -1,0 +1,12 @@
+
+
+/*
+ * SAI Model.
+*/ 
+
+
+sai bprintf_iface{
+
+	uri := .bprintf_iface;
+	version :=v1;
+};

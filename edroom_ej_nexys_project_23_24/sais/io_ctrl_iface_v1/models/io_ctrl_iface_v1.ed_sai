@@ -1,0 +1,12 @@
+
+
+/*
+ * SAI Model.
+*/ 
+
+
+sai io_ctrl_iface{
+
+	uri := .io_ctrl_iface;
+	version :=v1;
+};
