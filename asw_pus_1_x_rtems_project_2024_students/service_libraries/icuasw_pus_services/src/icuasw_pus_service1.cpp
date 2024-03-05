@@ -83,17 +83,18 @@ void PUSService1::TryTCAcceptation(CDTCHandler &tcHandler) {
 
 		switch (type) {
 		//TODO TC Acceptance and TC Classification
-//		case (9):
-//
-//			switch (subtype) {
-//
-//			case (129):
-//				tcHandler.SetExecCtrlAsPrioTC();
-//				break;
-//			default:
-//				acceptationStatus = TCAcceptationSubTypeError;
-//			}
-//			break;
+		case (9):
+
+			switch (subtype) {
+
+			case (129):
+					//le asigna tipo de telecomando prioritario
+				tcHandler.SetExecCtrlAsPrioTC();
+				break;
+			default:
+				acceptationStatus = TCAcceptationSubTypeError;
+			}
+			break;
 		case (17):
 			switch (subtype) {
 			case (1):

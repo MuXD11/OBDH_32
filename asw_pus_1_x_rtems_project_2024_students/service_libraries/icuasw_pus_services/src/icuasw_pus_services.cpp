@@ -32,7 +32,7 @@ void PUSPrioTCExecutor::ExecTC(CDTCHandler &tcHandler, CDTMList &tmList,
 						//
 					//  break;
 					case (17):
-						//PUSService17::ExecTC(tcHandler,tmList);
+						PUSService17::ExecTC(tcHandler,tmList);
 						break;
 					default:
 						break;
