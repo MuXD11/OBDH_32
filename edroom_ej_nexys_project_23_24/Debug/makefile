@@ -15,10 +15,6 @@ RM := rm -rf
 -include edroombp/src/rtemsapi_4_6/rtems_4_6/leon3/subdir.mk
 -include edroombp/src/rtemsapi_4_6/rtems_4_6/subdir.mk
 -include edroom_glue/src/subdir.mk
--include components/examplenexys/src/subdir.mk
--include components/ccsystemmng/src/subdir.mk
--include components/ccledmng/src/subdir.mk
--include components/ccdisplaysmng/src/subdir.mk
 -include subdir.mk
 -include objects.mk
 

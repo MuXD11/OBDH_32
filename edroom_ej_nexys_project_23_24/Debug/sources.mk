@@ -23,10 +23,6 @@ OBJS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-components/ccdisplaysmng/src \
-components/ccledmng/src \
-components/ccsystemmng/src \
-components/examplenexys/src \
 edroom_glue/src \
 edroombp/src/rtemsapi_4_6/rtems_4_6 \
 edroombp/src/rtemsapi_4_6/rtems_4_6/leon3 \

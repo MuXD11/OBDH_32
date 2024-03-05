@@ -17,7 +17,7 @@ OBJS += \
 leon3_uart_drv/src/%.o: ../leon3_uart_drv/src/%.c leon3_uart_drv/src/subdir.mk
 	@echo 'Building file: $<'
 	@echo 'Invoking: Cross GCC Compiler'
-	sparc-rtems-gcc -I"/home/opolo70/EDROOM-workspace/edroom_ej_nexys_project_23_24/nexys_gpio_drv/include" -I"/home/opolo70/EDROOM-workspace/edroom_ej_nexys_project_23_24/leon3_uart_drv/include" -I"/home/opolo70/EDROOM-workspace/edroom_ej_nexys_project_23_24/edroom_glue/include" -I"/home/opolo70/EDROOM-workspace/edroom_ej_nexys_project_23_24/edroombp/include" -I"/home/opolo70/EDROOM-workspace/edroom_ej_nexys_project_23_24/edroomsl/include" -I"/home/opolo70/EDROOM-workspace/edroom_ej_nexys_project_23_24/leon3_uart_drv/include" -I"/home/opolo70/EDROOM-workspace/edroom_ej_nexys_project_23_24/rtems_osswr/include" -O0 -g3 -Wall -c -fmessage-length=0 -msoft-float -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"
+	sparc-rtems-gcc -I"/home/atcsol/git/OBDH_32/edroom_ej_nexys_project_23_24/nexys_gpio_drv/include" -I"/home/atcsol/git/OBDH_32/edroom_ej_nexys_project_23_24/leon3_uart_drv/include" -I"/home/atcsol/git/OBDH_32/edroom_ej_nexys_project_23_24/edroom_glue/include" -I"/home/atcsol/git/OBDH_32/edroom_ej_nexys_project_23_24/edroombp/include" -I"/home/atcsol/git/OBDH_32/edroom_ej_nexys_project_23_24/edroomsl/include" -I"/home/atcsol/git/OBDH_32/edroom_ej_nexys_project_23_24/leon3_uart_drv/include" -I"/home/atcsol/git/OBDH_32/edroom_ej_nexys_project_23_24/rtems_osswr/include" -O0 -g3 -Wall -c -fmessage-length=0 -msoft-float -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

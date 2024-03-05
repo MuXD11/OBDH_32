@@ -28,9 +28,9 @@ void PUSPrioTCExecutor::ExecTC(CDTCHandler &tcHandler, CDTMList &tmList,
 		tcHandler.StartUpExecution();
 		switch (tcHandler.GetType()) {
 		//TODO Complete Execute Prio TCs
-					//case (9):
-						//
-					//  break;
+					case (9):
+						PUSService9::ExecTC(tcHandler,tmList);
+					  break;
 					case (17):
 						PUSService17::ExecTC(tcHandler,tmList);
 						break;
