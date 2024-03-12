@@ -22,7 +22,7 @@
 
 #ifdef FT_SOLO_EPD_ICU_SERV_17_0010
 
-//al usar la clase "EmuGSS_TCProgram17_1" programo un TC 17_1 creando un objeto "". Dichas pruebas pueden tener varios pasos
+//al usar la clase "EmuGSS_TCProgram17_1" programo un TC 17_1 creando un objeto de la clase "EmuGSS_TCProgram17_1". Dichas pruebas pueden tener varios pasos
 
 EmuGSS_TCProgram17_1 prog_FT_0010_step_0(UNITIME_AFTER_POWER_ON + 6,
 					"FT_SOLO_EPD_ICU_SERV_17_0010 step 0, Connection Test");
@@ -32,7 +32,7 @@ EmuGSS_TCProgram17_1 prog_FT_0010_step_0(UNITIME_AFTER_POWER_ON + 6,
 
 #ifdef FT_SOLO_EPD_ICU_SERV_9_0020
 
-#define FT_SOLO_EPD_ICU_SERV_9_0020_TIME 200000
+#define FT_SOLO_EPD_ICU_SERV_9_0020_TIME 300000
 
 EmuGSS_TCProgram9_129 prog_FT_0020_step_0(UNITIME_AFTER_POWER_ON + 10 ,
 		"FT_SOLO_EPD_ICU_SERV_9_0020 step 0, Update UniTime Test",
