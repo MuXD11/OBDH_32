@@ -1,9 +1,0 @@
-dataclass TEDROOMDouble{
-
-
-
-	uri := es.uah.aut.srg.edroom.mclev.data_sai.TEDROOMDouble.tedroomdouble_iface;
-	version := v1;
-
-
-};

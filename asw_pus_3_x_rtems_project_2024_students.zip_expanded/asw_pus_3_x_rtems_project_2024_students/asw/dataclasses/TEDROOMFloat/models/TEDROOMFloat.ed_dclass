@@ -1,9 +1,0 @@
-dataclass TEDROOMFloat{
-
-
-
-	uri := es.uah.aut.srg.edroom.mclev.data_sai.TEDROOMFloat.tedroomfloat_iface;
-	version := v1;
-
-
-};

@@ -1,9 +1,0 @@
-dataclass CDSensorTMBufferStatus{
-
-
-
-	uri := es.uah.aut.srg.edroom.mclev.data_sai.cdsensortmbufferstatus.cdsensortmbufferstatus_iface;
-	version := v1;
-
-
-};

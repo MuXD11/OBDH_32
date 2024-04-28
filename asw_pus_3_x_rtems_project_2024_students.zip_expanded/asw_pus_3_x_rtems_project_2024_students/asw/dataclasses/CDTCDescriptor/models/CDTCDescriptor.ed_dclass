@@ -1,9 +1,0 @@
-dataclass CDTCDescriptor{
-
-
-
-	uri := es.uah.aut.srg.edroom.mclev.data_sai.cdtcdescriptor.cdtcdescriptor_iface;
-	version := v1;
-
-
-};
