@@ -57,6 +57,9 @@ void PUSService12::ExecTC(CDTCHandler &tcHandler, CDTMList &tmList) {
 	case (5):
 		Exec12_5TC(tcHandler, tmList);
 		break;
+	case (6):
+		Exec12_6TC(tcHandler, tmList);
+		break;
 
 	default:
 		break;
@@ -144,6 +147,30 @@ void PUSService12::Exec12_1TC(CDTCHandler &tcHandler, CDTMList &tmList) {
 		if (PARAMMonitoringConfig[PMONID].status != MonitorUnselected) {
 			PARAMMonitoringConfig[PMONID].enabled = true;
 			PARAMMonitoringConfig[PMONID].intervalControl = 0;
+
+			PUSService1::BuildTM_1_7(tcHandler, tmList);
+		} else {
+
+			PUSService1::BuildTM_1_8_TC_12_X_PMONIDUndefined(tcHandler, tmList,
+					PMONID);
+
+		}
+
+	}
+}
+
+/*por ciernew TC[12,6]: En vez de borrar la definición de los parámetros del monitor, lo fijamos como "unselected", de manera
+//que el PMONID pasa a estar disponible y el contenido de los parámetros, si lo hubiera, se machacará luego*/
+
+void PUSService12::Exec12_6TC(CDTCHandler &tcHandler, CDTMList &tmList) {
+
+	uint16_t PMONID;
+
+	PMONID = tcHandler.GetNextUInt16();
+
+	if (PMONID < MAX_Number_PMON_IDs) {  //PMON ID válido
+		if (PARAMMonitoringConfig[PMONID].status != MonitorUnselected) {
+			PARAMMonitoringConfig[PMONID].status = MonitorUnselected;
 
 			PUSService1::BuildTM_1_7(tcHandler, tmList);
 		} else {
