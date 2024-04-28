@@ -1,0 +1,12 @@
+
+
+/*
+ * SAI Model.
+*/ 
+
+
+sai emu_hw_timecode_drv{
+
+	uri := .emu_hw_timecode_drv;
+	version :=v1;
+};

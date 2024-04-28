@@ -1,0 +1,12 @@
+
+
+/*
+ * SAI Model.
+*/ 
+
+
+sai emu_gss{
+
+	uri := .emu_gss;
+	version :=v1;
+};

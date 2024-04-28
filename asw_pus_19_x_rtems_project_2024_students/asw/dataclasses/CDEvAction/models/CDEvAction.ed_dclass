@@ -1,0 +1,9 @@
+dataclass CDEvAction{
+
+
+
+	uri := es.uah.aut.srg.edroom.mclev.data_sai.cdevaction.cdevaction_iface;
+	version := v1;
+
+
+};

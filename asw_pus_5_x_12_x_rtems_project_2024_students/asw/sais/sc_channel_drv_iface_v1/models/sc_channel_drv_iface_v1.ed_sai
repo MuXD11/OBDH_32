@@ -1,0 +1,12 @@
+
+
+/*
+ * SAI Model.
+*/ 
+
+
+sai sc_channel_drv_iface{
+
+	uri := .sc_channel_drv_iface;
+	version :=v1;
+};
