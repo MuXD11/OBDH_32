@@ -73,13 +73,13 @@ void	CCHK_FDIRMng::EDROOM_CTX_Top_0::FDoHK_FDIR()
 {
    //Define absolute time
   Pr_Time time;
- 
+CDEventList eventList;
 VNextTimeout+= Pr_Time(1,0); // Add X sec + Y microsec 
 time=VNextTimeout; 
 PUSService3::DoHK(VCurrentTMList);	
 PUSService12::DoMonitoring(eventList);
 PUSService5::BuildEventListTMs(eventList, VCurrentTMList);
-PUSService19::ManageEventActions(eventList);
+PUSService19::ManageEventActions(eventList); 
    //Program absolute timer 
    HK_FDIRTimer.InformAt( time ); 
 }
@@ -134,21 +134,21 @@ void	CCHK_FDIRMng::EDROOM_CTX_Top_0::FInvokeTxTMList()
 
 
 
-bool	CCHK_FDIRMng::EDROOM_CTX_Top_0::GPendingEvAction()
+void	CCHK_FDIRMng::EDROOM_CTX_Top_0::FTriggerEvAction()
 
 {
 
- return (!PUSService19::IsEvActionQueueEmpty());
+ PUSService19::TriggerEvActionExecution();
 
 }
 
 
 
-void	CCHK_FDIRMng::EDROOM_CTX_Top_0::FTriggerEvAction()
+bool	CCHK_FDIRMng::EDROOM_CTX_Top_0::GPendingEvAction()
 
 {
 
- PUSService19::TriggerEvActionExecution();
+ return (!PUSService19::IsEvActionQueueEmpty());
 
 }
 
@@ -230,8 +230,8 @@ void CCHK_FDIRMng::EDROOM_SUB_Top_0::EDROOMBehaviour()
 				//Next State is Ready
 				edroomNextState = Ready;
 				break;
-			//To Choice Point DoHK_DFIR
-			case (DoHK_DFIR):
+			//To Choice Point DoHK_FDIR_1
+			case (DoHK_FDIR_1):
 
 				//Execute Action 
 				FDoHK_FDIR();
@@ -243,9 +243,9 @@ void CCHK_FDIRMng::EDROOM_SUB_Top_0::EDROOMBehaviour()
 					//Execute Action 
 					FTriggerEvAction();
 
-					//Branch taken is DoHK_DFIR_PendingEvAction
+					//Branch taken is DoHK_FDIR_1_PendingEvAction
 					edroomCurrentTrans.localId =
-						DoHK_DFIR_PendingEvAction;
+						DoHK_FDIR_1_PendingEvAction;
 
 					//Next State is Ready
 					edroomNextState = Ready;
@@ -254,9 +254,9 @@ void CCHK_FDIRMng::EDROOM_SUB_Top_0::EDROOMBehaviour()
 				else
 				{
 
-					//Branch taken is DoHK_DFIR_NoEvAction
+					//Branch taken is DoHK_FDIR_1_NoEvAction
 					edroomCurrentTrans.localId =
-						DoHK_DFIR_NoEvAction;
+						DoHK_FDIR_1_NoEvAction;
 
 					//Next State is Ready
 					edroomNextState = Ready;
@@ -364,8 +364,8 @@ TEDROOMTransId CCHK_FDIRMng::EDROOM_SUB_Top_0::EDROOMReadyArrival()
 				 if (*Msg->GetPInterface() == HK_FDIRTimer)
 				{
 
-					//Next transition is  DoHK_DFIR
-					edroomCurrentTrans.localId = DoHK_DFIR;
+					//Next transition is  DoHK_FDIR_1
+					edroomCurrentTrans.localId = DoHK_FDIR_1;
 					edroomCurrentTrans.distanceToContext = 0 ;
 					edroomValidMsg=true;
 				 }

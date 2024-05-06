@@ -7,6 +7,8 @@
 
 #include <public/icuasw_pus_services_iface_v1.h>
 
+
+//número máximo de dispositivos permitidos
 #define DEVICE_MAX_ID 5
 void PUSService2::ExecTC(CDTCHandler &tc_handler, CDTMList &tm_list) {
 
@@ -37,7 +39,7 @@ void PUSService2::Exec2_1TC(CDTCHandler &tcHandler, CDTMList &tmList) {
 
 	} else {
 
-		if (on_off) {
+		if (on_off) {		//emular el apagado/encendido como un printf
 
 			printf("\tDevice %d Switch On\n", device_id);
 

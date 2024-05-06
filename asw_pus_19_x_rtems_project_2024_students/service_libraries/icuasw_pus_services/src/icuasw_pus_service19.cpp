@@ -62,7 +62,7 @@ void PUSService19::Exec19_1TC(CDTCHandler &tcHandler, CDTMList &tmList) {
 
 	EvID = tcHandler.GetNextUInt16();
 
-	evType = PUSService5::GetRIDType(EvID);
+	evType = PUSService5::GetRIDType(EvID);			//obtener el tipo del evento con el servicio 5
 
 	if (RIDNotValid == evType) {
 
@@ -84,7 +84,7 @@ void PUSService19::Exec19_1TC(CDTCHandler &tcHandler, CDTMList &tmList) {
 
 		} else {
 
-			if (enabled) { //Error, event action cannot be redefined if is enabled
+			if (enabled) { 							//Error, event action cannot be redefined if is enabled
 
 				PUSService1::BuildTM_1_8_TC_19_X_EvActionEnabled(tcHandler,
 						tmList, EvID);
@@ -154,12 +154,12 @@ void PUSService19::Exec19_2TC(CDTCHandler &tcHandler, CDTMList &tmList) {
 
 		if (GetEvActionConfig(EvID, index, enabled)) {
 
-			if (enabled) {
+			if (enabled) {													//NO puedes borrar una acción habilitada
 				PUSService1::BuildTM_1_8_TC_19_X_EvActionEnabled(tcHandler,
 						tmList, EvID);
 			} else {
 
-				//Event ID must be 0
+				//Event ID must be 0. When RID avalible, the table is empty (=0)
 				EventActionConfig[index].EvID = 0;
 				EventActionConfig[index].enabled = false;
 				PUSService1::BuildTM_1_7(tcHandler, tmList);
@@ -270,16 +270,16 @@ void PUSService19::ManageEventActions(CDEventList &eventList) {
 
 		const struct EventInfo_t *pEventInfo = eventList.GetEventInfo(i);
 
-		if (PUSService5::IsRIDEnabled(pEventInfo->mEvRID)) {
+		if (PUSService5::IsRIDEnabled(pEventInfo->mEvRID)) {		//comprobar que el evento está habilitado
 
 			uint8_t index;
 
 			bool enabled = false;
 
 			if (GetEvActionConfig(pEventInfo->mEvRID, index, enabled)) {
-				if (enabled) {
+				if (enabled) {										//comprobar que la acción asociada está habilitada
 
-					NewPendingEvAction(pEventInfo->mEvRID, index);
+					NewPendingEvAction(pEventInfo->mEvRID, index);  //si se cumplen las dos condiciones, se añade a la cola de TCs pendientes
 
 
 				}
@@ -345,7 +345,7 @@ bool PUSService19::InsertEvAction(uint16_t evID, uint8_t packIndex,
 	return inserted;
 }
 
-bool PUSService19::NewPendingEvAction(uint16_t evID, uint8_t packIndex) {
+bool PUSService19::NewPendingEvAction(uint16_t evID, uint8_t packIndex) {    //get the action and insert it to the queue
 
 	uint8_t *p_tc_bytes = tmtc_pool_alloc();
 	uint16_t num_of_bytes;

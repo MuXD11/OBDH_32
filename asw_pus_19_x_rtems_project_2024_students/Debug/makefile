@@ -26,6 +26,11 @@ RM := rm -rf
 -include asw/dataclasses/CDTMHandler/src/subdir.mk
 -include asw/dataclasses/CDTCHandler/src/subdir.mk
 -include asw/dataclasses/CDEventList/src/subdir.mk
+-include asw/components/icuasw/src/subdir.mk
+-include asw/components/cctm_channelctrl/src/subdir.mk
+-include asw/components/cchk_fdirmng/src/subdir.mk
+-include asw/components/ccepdmanager/src/subdir.mk
+-include asw/components/ccbkgtcexec/src/subdir.mk
 -include subdir.mk
 -include objects.mk
 

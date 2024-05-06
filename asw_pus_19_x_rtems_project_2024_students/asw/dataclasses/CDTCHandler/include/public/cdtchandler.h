@@ -23,7 +23,6 @@ enum TTCAcceptationStatus {
 class CDTCHandler {
 
 	friend class PUSService1;
-	friend class PUSService2;
 	friend class PUSService3;
 	friend class PUSService5;
 	friend class PUSService9;
@@ -31,11 +30,14 @@ class CDTCHandler {
 	friend class PUSService19;
 	friend class PUSService17;
 	friend class PUSService20;
+	friend class PUSService2;
+
+	friend class CDEvAction;
+
 
 	friend class PUSPrioTCExecutor;
 	friend class PUS_HK_FDIR_TCExecutor;
 	friend class PUS_BKGTCExecutor;
-	friend class CDEvAction;
 
 	friend void SC_Channel_GetNextTC(CDTCHandler *tc);
 

@@ -118,6 +118,18 @@ void	CCEPDManager::EDROOM_CTX_Top_0::FFwdToBKGTCExec()
 
 
 
+void	CCEPDManager::EDROOM_CTX_Top_0::FGetEvAction()
+
+{
+   //Handle Msg->data
+  CDEvAction & varEDROOMIRQSignal = *(CDEvAction *)Msg->data;
+ 
+PUSService19::GetEvActionTCHandler(varEDROOMIRQSignal, VCurrentTC); 
+
+}
+
+
+
 void	CCEPDManager::EDROOM_CTX_Top_0::FGetTC()
 
 {
@@ -224,18 +236,6 @@ bool	CCEPDManager::EDROOM_CTX_Top_0::GToReboot()
 {
 
 return VCurrentTC.IsRebootTC();
-
-}
-
-
-
-void	CCEPDManager::EDROOM_CTX_Top_0::FGetEvAction()
-
-{
-   //Handle Msg->data
-  CDEvAction & varEDROOMIRQsignal = *(CDEvAction *)Msg->data;
-PUSService19::GetEvActionTCHandler(varEDROOMIRQSignal, VCurrentTC); 
-//Get the TC descriptor from the EvAction
 
 }
 

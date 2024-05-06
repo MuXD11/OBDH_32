@@ -21,11 +21,11 @@
 
 //#define FT_SOLO_EPD_ICU_Monitoring_0070
 
-#define FT_SOLO_EPD_DeviceControl_0080
+//#define FT_SOLO_EPD_DeviceControl_0080
 
 //TODO
 //#define FT_SOLO_EPD_Event_Action_0090
-//#define FT_SOLO_EPD_Event_Action_0100
+#define FT_SOLO_EPD_Event_Action_0100
 //#define FT_SOLO_EPD_Event_Action_0110
 
 #ifdef FT_SOLO_EPD_ICU_SERV_17_0010
@@ -126,11 +126,52 @@ EmuGSS_TCProgram2_1 prog_FT_0080_step_2(UNITIME_AFTER_POWER_ON + 6,
 
 #ifdef FT_SOLO_EPD_Event_Action_0090
 
+//habilitar los eventos con RID 0x4001
+	EmuGSS_TCProgram5_5 prog_FT_0090_step_1(UNITIME_AFTER_POWER_ON + 4,"FT_SOLO_EPC_ICU_SERV_5_0080 step 1, Enable event reports with RID=0x4001",0x4001);
+
+//CREAMOS EL MONITOR CON RID=0X400 para PID=1 (PMONID=0); Y LO HABILITAMOS
+
+	//Configurar el monitor con ID 0: MONITORIZAMOS EL RANGO DEL PARÁMETRO Y SI SE VIOLA SE PRODUCE UNA RID TIPO4
+	EmuGSS_TCProgram12_5 prog_FT_0090_step_2(UNITIME_AFTER_POWER_ON + 5,
+		"FT_SOLO_EPD_ICU_Monitoring_0080 step 2, Config PMODID 0 for monitoring PID 1",
+		0, 1, 1, 1, 0x4000, 10, 0x4001);
+
+	//Activar el monitor con ID 0
+	EmuGSS_TCProgram12_1 prog_FT_0090_step_3(UNITIME_AFTER_POWER_ON + 6,
+		"FT_SOLO_EPD_ICU_Monitoring_0080 step 3, Enable Monitoring PMODID 0", 0);
+
+	//cambiar el valor del parámetro a un valor FUERA DEL RANGO (por encima)
+	EmuGSS_TCProgram20_3 prog_FT_0090_step_4(UNITIME_AFTER_POWER_ON + 7,
+		"FT_SOLO_EPD_ICU_Monitoring_0080 step 4, Update PID 1 to 99", 1, 99);
+
 
 
 #endif
 
 #ifdef FT_SOLO_EPD_Event_Action_0100
+
+//habilitar los eventos con RID 0x4001
+	EmuGSS_TCProgram5_5 prog_FT_0000_step_1(UNITIME_AFTER_POWER_ON + 4,"FT_SOLO_EPC_ICU_SERV_19_0100 step 1, Enable event reports with RID=0x4001",0x4001);
+
+//Configurar el monitor con ID 0: MONITORIZAMOS EL RANGO DEL PARÁMETRO Y SI SE VIOLA SE PRODUCE UNA RID TIPO4
+	EmuGSS_TCProgram12_5 prog_FT_0100_step_2(UNITIME_AFTER_POWER_ON + 5,"FT_SOLO_EPD_ICU_Monitoring_0100 step 2, Config PMODID 0 for monitoring PID 1",
+		0, 1, 1, 1, 0x4000, 10, 0x4001);
+
+//Activar el monitor con ID 0
+	EmuGSS_TCProgram12_1 prog_FT_0100_step_3(UNITIME_AFTER_POWER_ON + 6,
+		"FT_SOLO_EPD_ICU_Monitoring_0100 step 3, Enable Monitoring PMODID 0", 0);
+
+//definimos la acción para la RID 0X4001. Si se ha definido correctamente, al cambiar el valor el monitor genera un evento 0x4001 y este TC[2,1] se ejecutará
+	EmuGSS_TCProgram19_1_Action_2_1 prog_FT_0100_step4( UNITIME_AFTER_POWER_ON + 10, "FT_SOLO_EPD_ICU_SERV_19 Step 4, Set Event Action",0x4001, 1, DeviceCommandOff);
+
+//habilitamos la acción porque si no jodido
+	EmuGSS_TCProgram19_4 prog_FT_0100_step5( UNITIME_AFTER_POWER_ON+11,"FT_SOLO_EPD_ICU_SERV_19_XXX Step 5, Enable Event Action",
+	0x4001);
+
+//cambiar el valor del parámetro a un valor FUERA DEL RANGO (por encima)
+	EmuGSS_TCProgram20_3 prog_FT_0090_step_6(UNITIME_AFTER_POWER_ON + 15,
+		"FT_SOLO_EPD_ICU_Monitoring_0080 step 6, Update PID 1 to 99", 1, 99);
+
 
 
 

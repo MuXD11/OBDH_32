@@ -214,9 +214,9 @@ public:
 		//!Transition Identifiers
 		enum TEDROOMTransitionID{Init,
 			ExecTC,
-			DoHK_DFIR,
-			DoHK_DFIR_PendingEvAction,
-			DoHK_DFIR_NoEvAction,
+			DoHK_FDIR_1,
+			DoHK_FDIR_1_PendingEvAction,
+			DoHK_FDIR_1_NoEvAction,
 			EDROOMMemoryTrans };
 
 
@@ -291,14 +291,18 @@ public:
 		void	FInvokeTxTMList();
 
 		/**
-		 * \brief //comprueba si los eventos de la lista tienen acciones pendientes
-		 */
-		bool	GPendingEvAction();
-
-		/**
-		 * \brief //añade las acciones a la cola de acciones
+		 * \brief //chek if there is any pending action (added to queue previously by 
+		 * 	do_hk_fdir)
+		 * 	 
+		 * 	//new action: start "EvTCEventAction" event awakening ISR
 		 */
 		void	FTriggerEvAction();
+
+		/**
+		 * \brief //chek if there is any pending action (added to queue previously by 
+		 * 	do_hk_fdir)
+		 */
+		bool	GPendingEvAction();
 
 	};
 

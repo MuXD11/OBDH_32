@@ -65,9 +65,7 @@ Pr_TaskRV_t 	CCEPDManager::EDROOMIRQ10BottomHalfTask(Pr_TaskP_t){
 
 		if(!EDROOMSemEndIRQ10.WaitCond()){
 
-			EDROOMIRQ10SendMsgToCmp=
-
-			PUSService19::ExtractEvActionFromQueue(EDROOMVarIRQ10);
+			EDROOMIRQ10SendMsgToCmp=PUSService19::ExtractEvActionFromQueue(EDROOMVarIRQ10);
 
 			if(EDROOMIRQ10SendMsgToCmp){
 				CDEvAction	*pEDROOMVarIRQ;

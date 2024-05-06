@@ -23,6 +23,11 @@ OBJS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+asw/components/ccbkgtcexec/src \
+asw/components/ccepdmanager/src \
+asw/components/cchk_fdirmng/src \
+asw/components/cctm_channelctrl/src \
+asw/components/icuasw/src \
 asw/dataclasses/CDEventList/src \
 asw/dataclasses/CDTCHandler/src \
 asw/dataclasses/CDTMHandler/src \
